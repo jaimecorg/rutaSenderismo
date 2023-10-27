@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'dev-master',
-        'version' => 'dev-master',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'ddb081f206ec1a0e3d01df0114d09744445c3fa2',
+        'reference' => 'd2ac0fb5a61c956d776727d421165c399ad03ab9',
         'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
         '__root__' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'ddb081f206ec1a0e3d01df0114d09744445c3fa2',
+            'reference' => 'd2ac0fb5a61c956d776727d421165c399ad03ab9',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -198,6 +198,15 @@
             'aliases' => array(),
             'reference' => '91aabc066d5620428120800c0eafc0411e441a62',
             'dev_requirement' => false,
+        ),
+        'nikic/php-parser' => array(
+            'pretty_version' => 'v4.17.1',
+            'version' => '4.17.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nikic/php-parser',
+            'aliases' => array(),
+            'reference' => 'a6303e50c90c355c7eeee2c4a8b27fe8dc8fef1d',
+            'dev_requirement' => true,
         ),
         'ocramius/package-versions' => array(
             'dev_requirement' => false,
@@ -456,6 +465,15 @@
             'aliases' => array(),
             'reference' => 'aa6df6c045f034aa13ac752fc234bb300b9488ef',
             'dev_requirement' => false,
+        ),
+        'symfony/maker-bundle' => array(
+            'pretty_version' => 'v1.39.1',
+            'version' => '1.39.1.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/maker-bundle',
+            'aliases' => array(),
+            'reference' => '30c8ac13511f6df7bc9ac088f31d7a48ce6433c6',
+            'dev_requirement' => true,
         ),
         'symfony/mime' => array(
             'pretty_version' => 'v4.4.47',
