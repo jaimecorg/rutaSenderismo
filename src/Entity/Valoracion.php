@@ -37,6 +37,11 @@ class Valoracion
      */
     private $ruta;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Usuario::class, inversedBy="valoraciones")
+     */
+    private $usuario;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +91,18 @@ class Valoracion
     public function setRuta(?Ruta $ruta): self
     {
         $this->ruta = $ruta;
+
+        return $this;
+    }
+
+    public function getUsuario(): ?Usuario
+    {
+        return $this->usuario;
+    }
+
+    public function setUsuario(?Usuario $usuario): self
+    {
+        $this->usuario = $usuario;
 
         return $this;
     }

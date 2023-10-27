@@ -39,9 +39,15 @@ class Usuario
      */
     private $rutas;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Valoracion::class, mappedBy="usuario")
+     */
+    private $valoraciones;
+
     public function __construct()
     {
         $this->rutas = new ArrayCollection();
+        $this->valoraciones = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -109,6 +115,36 @@ class Usuario
             // set the owning side to null (unless already changed)
             if ($ruta->getUsuario() === $this) {
                 $ruta->setUsuario(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Valoracion>
+     */
+    public function getValoraciones(): Collection
+    {
+        return $this->valoraciones;
+    }
+
+    public function addValoracione(Valoracion $valoracione): self
+    {
+        if (!$this->valoraciones->contains($valoracione)) {
+            $this->valoraciones[] = $valoracione;
+            $valoracione->setUsuario($this);
+        }
+
+        return $this;
+    }
+
+    public function removeValoracione(Valoracion $valoracione): self
+    {
+        if ($this->valoraciones->removeElement($valoracione)) {
+            // set the owning side to null (unless already changed)
+            if ($valoracione->getUsuario() === $this) {
+                $valoracione->setUsuario(null);
             }
         }
 
