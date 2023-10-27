@@ -42,6 +42,13 @@ class Ruta
      */
     private $descripcion;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Usuario::class, inversedBy="rutas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $usuario;
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -103,6 +110,18 @@ class Ruta
     public function setDescripcion(?string $descripcion): self
     {
         $this->descripcion = $descripcion;
+
+        return $this;
+    }
+
+    public function getUsuario(): ?Usuario
+    {
+        return $this->usuario;
+    }
+
+    public function setUsuario(?Usuario $usuario): self
+    {
+        $this->usuario = $usuario;
 
         return $this;
     }
