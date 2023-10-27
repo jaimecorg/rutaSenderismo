@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RutaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -47,6 +49,16 @@ class Ruta
      * @ORM\JoinColumn(nullable=false)
      */
     private $usuario;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Valoracion::class, mappedBy="ruta")
+     */
+    private $valoraciones;
+
+    public function __construct()
+    {
+        $this->valoraciones = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -122,6 +134,36 @@ class Ruta
     public function setUsuario(?Usuario $usuario): self
     {
         $this->usuario = $usuario;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Valoracion>
+     */
+    public function getValoraciones(): Collection
+    {
+        return $this->valoraciones;
+    }
+
+    public function addValoracione(Valoracion $valoracione): self
+    {
+        if (!$this->valoraciones->contains($valoracione)) {
+            $this->valoraciones[] = $valoracione;
+            $valoracione->setRuta($this);
+        }
+
+        return $this;
+    }
+
+    public function removeValoracione(Valoracion $valoracione): self
+    {
+        if ($this->valoraciones->removeElement($valoracione)) {
+            // set the owning side to null (unless already changed)
+            if ($valoracione->getRuta() === $this) {
+                $valoracione->setRuta(null);
+            }
+        }
 
         return $this;
     }

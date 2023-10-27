@@ -32,6 +32,11 @@ class Valoracion
      */
     private $comentario;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Ruta::class, inversedBy="valoraciones")
+     */
+    private $ruta;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class Valoracion
     public function setComentario(string $comentario): self
     {
         $this->comentario = $comentario;
+
+        return $this;
+    }
+
+    public function getRuta(): ?Ruta
+    {
+        return $this->ruta;
+    }
+
+    public function setRuta(?Ruta $ruta): self
+    {
+        $this->ruta = $ruta;
 
         return $this;
     }
