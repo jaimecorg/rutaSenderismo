@@ -70,6 +70,8 @@
         }
     },
     "require-dev": {
-        "symfony/maker-bundle": "*"
+        "doctrine/doctrine-fixtures-bundle": "^3.4",
+        "symfony/maker-bundle": "*",
+        "zenstruck/foundry": "^1.23"
     }
 }
