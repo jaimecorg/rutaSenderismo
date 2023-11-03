@@ -46,7 +46,13 @@ class UsuarioRepository extends ServiceEntityRepository
             $this->_em->flush();
         }
     }
-
+    public function findAllOrdenados()
+    {
+        return $this->createQueryBuilder('u')
+            ->orderBy('u.correo')
+            ->getQuery()
+            ->getResult();
+    }
     // /**
     //  * @return Usuario[] Returns an array of Usuario objects
     //  */
