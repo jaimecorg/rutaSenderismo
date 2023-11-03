@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if ruta.id %}
+        <h1>Modificar ruta</h1>
+    {% else %}
+        <h1>Registrar ruta</h1>
+    {% endif %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <a href="{{ path('ruta_listar') }}" class="btn btn-info"><i class="bi bi-box-arrow-up-left"></i> Volver al listado</a>
+    <button type="submit" class="btn btn-success">Guardar cambios</button>
+
+    {% if ruta.id %}
+        <a href="{{ path('ruta_eliminar', {'id': ruta.id}) }}" class="btn btn-danger"><i class="bi bi-trash"></i> Eliminar ruta</a>
+    {% endif %}
+
+    {{ form_end(form) }}
+
+{% endblock %}
+

@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <h1>Eliminar ruta</h1>
+
+    <div class="alert alert-warning">
+        ¿Está seguro de que desea eliminar la ruta {{ ruta.nombre }}? La operación no se puede deshacer.
+    </div>
+    <form method="post">
+        <a href="{{ path('ruta_modificar', {'id': ruta.id}) }}" class="btn btn-info"><i class="bi bi-box-arrow-up-left"></i> Volver a la ruta</a>
+        <button type="submit" name="confirmar" value="ok" class="btn btn-danger"><i class="bi bi-trash"></i> Confirmar eliminación</button>
+    </form>
+
+{% endblock %}
+

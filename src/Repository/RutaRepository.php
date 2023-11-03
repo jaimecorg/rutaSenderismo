@@ -47,6 +47,14 @@ class RutaRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllOrdenadas()
+    {
+        return $this->createQueryBuilder('r')
+            ->orderBy('r.nombre')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Ruta[] Returns an array of Ruta objects
     //  */
