@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if valoracion.id %}
+        <h1>Modificar valoración</h1>
+    {% else %}
+        <h1>Registrar valoración</h1>
+    {% endif %}
+
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    <a href="{{ path('valoracion_listar') }}" class="btn btn-info"><i class="bi bi-box-arrow-up-left"></i> Volver al listado</a>
+    <button type="submit" class="btn btn-success">Guardar cambios</button>
+
+    {% if valoracion.id %}
+        <a href="{{ path('valoracion_eliminar', {'id': valoracion.id}) }}" class="btn btn-danger"><i class="bi bi-trash"></i> Eliminar valoración</a>
+    {% endif %}
+
+    {{ form_end(form) }}
+
+{% endblock %}
+

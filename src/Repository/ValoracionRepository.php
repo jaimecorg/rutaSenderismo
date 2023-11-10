@@ -47,6 +47,14 @@ class ValoracionRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllOrdenadas()
+    {
+        return $this->createQueryBuilder('v')
+            ->orderBy('v.comentario')
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Valoracion[] Returns an array of Valoracion objects
     //  */

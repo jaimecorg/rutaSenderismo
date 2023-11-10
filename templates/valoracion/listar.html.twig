@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h3>Listado de rutas </h3>
+    <a href="{{ path('valoracion_nueva') }}">Nueva valoración</a>
+    <table border="1px solid">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Ruta</th>
+                <th>Usuario</th>
+                <th>Puntuación</th>
+                <th>Puntuación media</th>
+                <th>Comentario</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for valoracion in valoraciones %}
+            <tr>
+                <td>{{ valoracion.id }}</td>
+                <td>{{ valoracion.ruta.nombre }}</td>
+                <td>{{ valoracion.usuario.correo }}</td>
+                <td>{{ valoracion.puntuacion }}</td>
+                <td>{{ valoracion.puntuacionMedia  }}</td>
+                <td>{{ valoracion.comentario  }}</td>
+                <td><a href="{{ path('valoracion_modificar', {'id': valoracion.id}) }}">Modificar</a></td>
+                <td><a href="{{ path('valoracion_eliminar', {'id': valoracion.id}) }}">Eliminar</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <th colspan="5">No hay valoraciones</th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
