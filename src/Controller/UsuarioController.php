@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class UsuarioController extends AbstractController
 {
     /**
-     * @Route("/", name="usuario_listar")
+     * @Route("/usuario", name="usuario_listar")
      */
     public function listar(UsuarioRepository $usuarioRepository) : Response
     {

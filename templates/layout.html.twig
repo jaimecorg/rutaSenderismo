@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header>
+        <ul class="lista">
+            <li>
+                <a href="{{ path('index') }}">Inicio</a>
+            </li>
+            <li>
+                <a href="{{ path('ruta_listar') }}">Rutas</a>
+            </li>
+            <li>
+                <a href="{{ path('ruta_nueva') }}">Crear ruta</a>
+            </li>
+            <li>
+                <a href="{{ path('valoracion_listar') }}">Valoraciones</a>
+            </li>
+            <li>
+                <a href="{{ path('usuario_listar') }}">Perfil</a>
+            </li>
+            <li>
+                <a href="{{ path('usuario_nuevo') }}">Iniciar sesión</a>
+            </li>
+        </ul>
+    </header>
+
+    <div class="contenido">
+        {% block content %}{% endblock %}
+    </div>
+    {#<nav>
+        <div class="contenido">
+            <p>NAV</p>
+
+            <div class="autor">
+                <label for="">Autor:</label>
+                <span>juanlu99</span>
+            </div>
+
+            <p>
+                <label for="">Distancia: </label>
+                <span>12.3 km</span>
+            </p>
+            <p>
+                <label for="">Desnivel: </label>
+                <span>1254 m</span>
+            </p>
+            <p>
+                <label for="">Valoración: </label>
+                <span>4.5</span>
+            </p>
+            <p>
+                <label for="">Dirección: </label>
+                <span>2851</span>
+            </p>
+        </div>
+    </nav>
+    <article>
+        <div class="contenido">
+            <p>ARTICLE</p>
+
+            <p>IMAGEN MAPA</p>
+
+            <div class="divImg">
+                <img src="" alt="" class="imgMapa">
+            </div>
+
+            <h2>Nombre de la ruta</h2>
+
+            <p>Introduccción información de la ruta.</p>
+            <p>Nudo información de la ruta.</p>
+            <p>Desenlace información de la ruta.</p>
+        </div>
+
+    </article>#}
+
+    <footer>
+        <p class="parrafoFooter">2023, Jaime Corpas Gómez</p>
+    </footer>
+{% endblock %}
+
