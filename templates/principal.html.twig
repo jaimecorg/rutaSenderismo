@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     <link href="{{ asset('css/principal.css') }}" type="text/css" rel="stylesheet" />
-{#    <script src="{{ asset('Scripts/principal.js') }}"></script>#}
+{#    <script src="{{ asset('js/principal.js') }}"></script>#}
 {% endblock %}
 
 {% block content %}
@@ -15,16 +15,14 @@
             <p class="principal_titulos principal_abajo">Únete para descubrir tu lado más salvaje</p>
 
             <div class="separador"></div>
-            <div class="separador"></div>
 
             <h2 class="principal_subTitulo">Explora un nuevo mundo</h2>
             <div class="carrusel">
                 <p id="btnIzquierda" class="flechas"><i class="fa-solid fa-arrow-left"></i></p>
-{#                <img id="fotoCarrusel" class="imgCarrusel" src="{{ asset('Imagenes/maquinas1.jpg') }}" alt="">#}
+                <img id="fotoCarrusel" class="imgCarrusel" src="{{ asset('img/carrusel1.jpg') }}" alt="">
                 <p id="btnDerecha" class="flechas"><i class="fa-solid fa-arrow-right"></i></p>
             </div>
 
-            <div class="separador"></div>
             <div class="separador"></div>
 
             <h2 class="principal_subTitulo">¡¡Utiliza nuestra web!!</h2>
@@ -34,10 +32,9 @@
                     <li><i class="icono_lista fa-solid fa-check"></i> ¡Conocer a gente nueva!</li>
                     <li><i class="icono_lista fa-solid fa-check"></i> ¡Encontar las rutas mejor valoradas con toda su información!</li>
                 </ul>
-{#                <img src="{{ asset('Imagenes/genteEntrenando.webp') }}" alt="">#}
+{#                <img src="{{ asset('Imagenes/') }}" alt="">#}
             </div>
 
-            <div class="separador"></div>
             <div class="separador"></div>
 
             <h2 class="principal_subTitulo">¡¡Localizanos!!</h2>

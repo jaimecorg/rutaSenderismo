@@ -39,7 +39,7 @@ header{
 .separador{
     height: 2px;
     width: 100%;
-    background-color: #462467;
+    background-color: rgba(46, 52, 46, 0.862);
     margin-top: 0.2em;
     margin-bottom: 0.2em;
 }
@@ -56,7 +56,7 @@ header{
     justify-content: space-evenly;
     margin-bottom: 3em;
     height: 500px;
-    background-color: rgba(208, 200, 252, 0.63);
+    background-color: rgba(217, 194, 88, 0.63);
 }
 .carrusel img{
     max-width: 700px;
@@ -67,7 +67,7 @@ header{
     filter: drop-shadow(2px 2px 2px);
     border-radius: 0.7em;
     padding: 0.3em;
-    color: #462467;
+    color: rgba(217, 194, 88, 0.63);
 }
 .flechas:hover{
     filter: drop-shadow(0 0 0);
@@ -76,8 +76,7 @@ header{
 .imgCarrusel{
     border-radius: 2em;
     padding: 0.3em;
-    background-color: white;
-    filter: drop-shadow(5px 5px 2px #462467);
+    filter: drop-shadow(5px 5px 2px rgba(46, 52, 46, 0.862));
 }
 .fila{
     display: flex;
