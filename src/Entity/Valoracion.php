@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ValoracionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ValoracionRepository::class)
@@ -19,11 +20,13 @@ class Valoracion
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      */
     private $puntuacion;
 
     /**
      * @ORM\Column(type="float", nullable=true)
+     * @Assert\NotBlank()
      */
     private $puntuacionMedia;
 

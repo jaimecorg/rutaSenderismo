@@ -6,6 +6,7 @@ use App\Repository\RutaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=RutaRepository::class)
@@ -21,11 +22,15 @@ class Ruta
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=100)
      */
     private $nombre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=255)
      */
     private $direccion;
 
@@ -59,7 +64,6 @@ class Ruta
     {
         $this->valoraciones = new ArrayCollection();
     }
-
 
     public function getId(): ?int
     {
@@ -146,22 +150,22 @@ class Ruta
         return $this->valoraciones;
     }
 
-    public function addValoracione(Valoracion $valoracione): self
+    public function addValoraciones(Valoracion $valoraciones): self
     {
-        if (!$this->valoraciones->contains($valoracione)) {
-            $this->valoraciones[] = $valoracione;
-            $valoracione->setRuta($this);
+        if (!$this->valoraciones->contains($valoraciones)) {
+            $this->valoraciones[] = $valoraciones;
+            $valoraciones->setRuta($this);
         }
 
         return $this;
     }
 
-    public function removeValoracione(Valoracion $valoracione): self
+    public function removeValoracione(Valoracion $valoraciones): self
     {
-        if ($this->valoraciones->removeElement($valoracione)) {
+        if ($this->valoraciones->removeElement($valoraciones)) {
             // set the owning side to null (unless already changed)
-            if ($valoracione->getRuta() === $this) {
-                $valoracione->setRuta(null);
+            if ($valoraciones->getRuta() === $this) {
+                $valoraciones->setRuta(null);
             }
         }
 
