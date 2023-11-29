@@ -1,6 +1,6 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block body %}
+{% block content %}
     <h3>Listado de usuarios </h3>
     <a href="{{ path('usuario_nuevo') }}">Nuevo usuario</a>
     <table border="1px solid">
@@ -10,6 +10,7 @@
                 <th>Nombre de usuario</th>
                 <th>Correo</th>
                 <th>Clave</th>
+                <th>Permisos</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -21,6 +22,7 @@
                 <td>{{ usuario.nombreUsuario }}</td>
                 <td>{{ usuario.correo }}</td>
                 <td>{{ usuario.clave  }}</td>
+                <td>{{ usuario.permisos  }}</td>
 
                 <td><a href="{{ path('usuario_modificar', {'id': usuario.id}) }}">Modificar</a></td>
                 <td><a href="{{ path('usuario_eliminar', {'id': usuario.id}) }}">Eliminar</a></td>

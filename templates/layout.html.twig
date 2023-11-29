@@ -5,7 +5,7 @@
         <div class="logo"></div>
         <ul class="lista">
             <li>
-                <a href="{{ path('index') }}">Inicio</a>
+                <a href="{{ path('principal') }}">Inicio</a>
             </li>
             <li>
                 <a href="{{ path('ruta_listar') }}">Rutas</a>
@@ -19,9 +19,19 @@
             <li>
                 <a href="{{ path('usuario_listar') }}">Perfil</a>
             </li>
-            <li>
-                <a href="{{ path('usuario_nuevo') }}">Iniciar sesión</a>
-            </li>
+            {#<li>
+                <a href="{{ path('entrar') }}">Iniciar sesión</a>
+            </li>#}
+            {% if is_granted('ROLE_USUARIO') == false %}
+                <li>
+                    <a aria-current="page" href="{{ path('entrar') }}">Login</a>
+                </li>
+            {% endif %}
+            {% if is_granted('ROLE_USUARIO') %}
+                <li class="nav-item">
+                    <a aria-current="page" href="{{ path('salir') }}">Logout</a>
+                </li>
+            {% endif %}
         </ul>
     </header>
 

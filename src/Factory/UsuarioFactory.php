@@ -43,6 +43,9 @@ final class UsuarioFactory extends ModelFactory
             'correo' => self::faker()->email(),
             'nombreUsuario' => self::faker()->userName(),
             'clave' => self::faker()->password(),
+            'permisos' => self::faker()->password(),
+            'administrador' => false,
+            'moderador' => false,
         ];
     }
 

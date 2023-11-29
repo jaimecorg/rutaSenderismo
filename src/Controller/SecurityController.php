@@ -11,10 +11,23 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class SecurityController extends AbstractController
 {
     /**
-     * @Route("/login", name="index")
+     * @Route("/entrar", name="entrar")
      */
-    public function listar() : Response
+    public function loginAction(AuthenticationUtils $authenticationUtils) : Response
     {
-        return $this->render('base.html.twig');
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        return $this->render('security/login.html.twig', [
+            'error' => $error,
+            'ultimo_usuario' => $lastUsername
+        ]);
+    }
+
+    /**
+     * @Route("/salir", name="salir")
+     */
+    public function logout()
+    {
     }
 }

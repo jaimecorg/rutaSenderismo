@@ -6,12 +6,13 @@ use App\Repository\UsuarioRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UsuarioRepository::class)
  */
-class Usuario
+class Usuario implements UserInterface
 {
     /**
      * @ORM\Id
@@ -51,6 +52,23 @@ class Usuario
      * @ORM\OneToMany(targetEntity=Valoracion::class, mappedBy="usuario")
      */
     private $valoraciones;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
+     * @Assert\Length(max=255)
+     */
+    private $permisos;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $administrador;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $moderador;
 
     public function __construct()
     {
@@ -157,5 +175,79 @@ class Usuario
         }
 
         return $this;
+    }
+
+    public function getPermisos(): ?string
+    {
+        return $this->permisos;
+    }
+
+    public function setPermisos(string $permisos): self
+    {
+        $this->permisos = $permisos;
+
+        return $this;
+    }
+
+    public function getAdministrador()
+    {
+        return $this->administrador;
+    }
+
+    public function setAdministrador($administrador)
+    {
+        $this->administrador = $administrador;
+        return $this;
+    }
+
+    public function getModerador()
+    {
+        return $this->moderador;
+    }
+
+    public function setModerador($moderador)
+    {
+        $this->moderador = $moderador;
+        return $this;
+    }
+
+    /*
+        ADMIN: borra
+        MODERADOR: modifica
+        USUARIO: crea
+        No Usuario: solo lista
+    */
+    public function getRoles()
+    {
+        $roles = ['ROLE_USUARIO'];
+
+        if ($this->getAdministrador()) {
+            $roles[] = 'ROLE_ADMIN';
+        }
+
+        if ($this->getModerador()) {
+            $roles[] = 'ROLE_MODERADOR';
+        }
+
+        return $roles;
+    }
+
+    public function getPassword()
+    {
+        return $this->clave;
+    }
+
+    public function getSalt()
+    {
+        return null;
+    }
+
+    public function getUsername()
+    {
+        return $this->getNombreUsuario();
+    }
+
+    public function eraseCredentials()
+    {
     }
 }
