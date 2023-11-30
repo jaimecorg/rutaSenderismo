@@ -7,7 +7,7 @@
         <a href="{{ path('usuario_nuevo') }}">Nuevo usuario</a>
     </p>
 
-    <table id="myTable" class="display" style="width:100%">
+    <table id="myTable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>
@@ -15,6 +15,8 @@
                 <th>Correo</th>
                 <th>Clave</th>
                 <th>Permisos</th>
+                <th>Moderador</th>
+                <th>Administrador</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -27,6 +29,8 @@
                 <td>{{ usuario.correo }}</td>
                 <td>{{ usuario.clave  }}</td>
                 <td>{{ usuario.permisos  }}</td>
+                <td><input type="checkbox" {% if usuario.moderador %}checked="checked"{% endif %} disabled="disabled"></td>
+                <td><input type="checkbox" {% if usuario.administrador %}checked="checked"{% endif %} disabled="disabled"></td>
 
                 <td><a href="{{ path('usuario_modificar', {'id': usuario.id}) }}">Modificar</a></td>
                 <td><a href="{{ path('usuario_eliminar', {'id': usuario.id}) }}">Eliminar</a></td>

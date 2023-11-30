@@ -2,8 +2,14 @@ $(document).ready( function () {
     $('#myTable').DataTable(
         {
             "aoColumnDefs": [
-                { "bSortable": false, "aTargets": [ 6, 7 ] },
-                { "bSearchable": false, "aTargets": [ 6, 7 ] }
+                {
+                    "bSortable": false,
+                    "aTargets": [ -1, -2 ] // Excluir las dos últimas columnas
+                },
+                {
+                    "bSearchable": false,
+                    "aTargets": [ -1, -2 ] // Excluir las dos últimas columnas
+                }
             ],
 
             language: {
