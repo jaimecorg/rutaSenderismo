@@ -2,8 +2,12 @@
 
 {% block content %}
     <h3>Listado de usuarios </h3>
-    <a href="{{ path('usuario_nuevo') }}">Nuevo usuario</a>
-    <table border="1px solid">
+
+    <p>
+        <a href="{{ path('usuario_nuevo') }}">Nuevo usuario</a>
+    </p>
+
+    <table id="myTable" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>

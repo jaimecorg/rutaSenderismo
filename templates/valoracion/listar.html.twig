@@ -2,8 +2,12 @@
 
 {% block content %}
     <h3>Listado de rutas </h3>
-    <a href="{{ path('valoracion_nueva') }}">Nueva valoración</a>
-    <table border="1px solid">
+
+    <p>
+        <a href="{{ path('valoracion_nueva') }}">Nueva valoración</a>
+    </p>
+
+    <table id="myTable" class="display" style="width:100%">
         <thead>
             <tr>
                 <th>ID</th>

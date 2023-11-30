@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <title>{% block title %}Pisadas salvajes{% endblock %}</title>
         <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+        <script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+        <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+        <script src="{{ asset('DataTables/script.js') }}"></script>
 
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
