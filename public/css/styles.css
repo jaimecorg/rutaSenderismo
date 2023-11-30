@@ -73,6 +73,7 @@ article{
 .imgMapa{
     width: 50%;
 }
+
 .contenido{
     margin: 1em;
 }
@@ -86,7 +87,6 @@ footer{
     bottom: 0;
     display: flex;
     justify-content: center;
-
 
     .parrafoFooter{
         text-align: center;

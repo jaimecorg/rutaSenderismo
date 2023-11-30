@@ -8,6 +8,7 @@ use App\Repository\RutaRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class RutaController extends AbstractController
@@ -77,6 +78,33 @@ class RutaController extends AbstractController
         }
 
         return $this->render('ruta/eliminar.html.twig', [
+            'ruta' => $ruta
+        ]);
+    }
+
+    /**
+     * @Route("/rutaDetalle", name="ruta_listar_detalle")
+     */
+    public function listarDetalle(RutaRepository $rutaRepository) : Response
+    {
+        $rutas = $rutaRepository->findAllOrdenadas();
+        return $this->render('ruta/listadoDetalle.html.twig', [
+            'rutas' => $rutas
+        ]);
+    }
+
+    /**
+     * @Route("/ruta/info/{id}", name="ruta_info")
+     */
+    public function info(RutaRepository $rutaRepository, $id) : Response
+    {
+        $ruta = $rutaRepository->find($id);
+
+        if (!$ruta) {
+            throw new NotFoundHttpException('La ruta no fue encontrada');
+        }
+
+        return $this->render('ruta/listadoInfo.html.twig', [
             'ruta' => $ruta
         ]);
     }

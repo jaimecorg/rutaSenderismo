@@ -1,0 +1,44 @@
+.ruta-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.ruta-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    width: calc(30% - 10px); /* Para mostrar 3 tarjetas por fila, ajusta el ancho según tus necesidades */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.ruta-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.ruta-card-header h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.ruta-card-header p {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.ruta-card-details p {
+    margin: 5px 0;
+    font-size: 0.9rem;
+}
+
+.ruta-card-actions a {
+    display: inline-block;
+    margin-right: 10px;
+    text-decoration: none;
+    color: #68ab5d;
+    font-weight: bold;
+}

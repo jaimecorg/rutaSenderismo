@@ -11,17 +11,16 @@
                 <a href="{{ path('ruta_listar') }}">Rutas</a>
             </li>
             <li>
-                <a href="{{ path('ruta_nueva') }}">Crear ruta</a>
+                <a href="{{ path('ruta_listar_detalle') }}">Rutas Detalle</a>
             </li>
             <li>
                 <a href="{{ path('valoracion_listar') }}">Valoraciones</a>
             </li>
+
             <li>
-                <a href="{{ path('usuario_listar') }}">Perfil</a>
+                <a href="{{ path('usuario_listar') }}">Usuarios</a>
             </li>
-            {#<li>
-                <a href="{{ path('entrar') }}">Iniciar sesión</a>
-            </li>#}
+
             {% if is_granted('ROLE_USUARIO') == false %}
                 <li>
                     <a aria-current="page" href="{{ path('entrar') }}">Login</a>
