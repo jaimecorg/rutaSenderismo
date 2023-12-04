@@ -104,8 +104,12 @@ class RutaController extends AbstractController
             throw new NotFoundHttpException('La ruta no fue encontrada');
         }
 
+        // Obtener las valoraciones de la ruta
+        $valoraciones = $ruta->getValoraciones();
+
         return $this->render('ruta/listadoInfo.html.twig', [
-            'ruta' => $ruta
+            'ruta' => $ruta,
+            'valoraciones' => $valoraciones,
         ]);
     }
 }

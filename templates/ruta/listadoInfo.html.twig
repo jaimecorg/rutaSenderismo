@@ -1,0 +1,66 @@
+{% extends 'layout.html.twig' %}
+
+{% block content %}
+    <article>
+        <div class="contenido">
+            <p>ARTICLE</p>
+
+            <p>IMAGEN MAPA</p>
+
+            <div class="divImg">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3139.6892466773497!2d-3.7866460488276856!3d38.100896501002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6c2633321b1a99%3A0x612788ed24fef1f!2sProl.%20Juan%20Salcedo%20Guill%C3%A9n%2C%2023710%20Bail%C3%A9n%2C%20Ja%C3%A9n!5e0!3m2!1ses!2ses!4v1655806230294!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <h3>{{ ruta.nombre }}</h3>
+
+            <p><strong>Descripción:</strong> {{ ruta.descripcion }}</p>
+
+            <p><strong>Comentarios</strong>Muchos comentarios</p>
+                {% for valoracion in valoraciones %}
+
+                    <div class="comentarios-section">
+                        <div class="comentario">
+                            <div class="usuario">
+                                <p>{{ valoracion.usuario.nombreUsuario }}</p>
+                            </div>
+                            <div class="puntuacion">
+                                <p>{{ valoracion.puntuacion }}</p>
+                            </div>
+                            <div class="texto-comentario">
+                                <p>{{ valoracion.comentario }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+
+
+        </div>
+    </article>
+
+    <nav>
+        <div class="contenido">
+            <p>NAV</p>
+
+            <div class="autor">
+                <label for="">Autor:</label>
+                <span>juanlu99</span>
+            </div>
+            <p>
+                <label for="">Distancia: </label>
+                <span>12.3 km</span>
+            </p>
+            <p>
+                <label for="">Desnivel: </label>
+                <span>1254 m</span>
+            </p>
+
+            <p><strong>Desnivel:</strong> {{ ruta.desnivel }}</p>
+            <p><strong>Duración:</strong> {{ ruta.duracion ? ruta.duracion | date('d/m/Y') : 'N/A' }}</p>
+
+            <label for="">Dirección: </label>
+            <p>{{ ruta.direccion }}</p>
+        </div>
+    </nav>
+
+{% endblock %}

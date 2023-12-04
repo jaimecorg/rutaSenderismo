@@ -47,37 +47,6 @@ header a:hover{
     background-color: rgb(151, 141, 141);
 }
 
-nav{
-    position: absolute;
-    left: 0;
-    width: 30%;
-    height: 90%;
-    background-color: aquamarine;
-    bottom: 0;
-}
-
-article{
-    width: 70%;
-    height: 90%;
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    background-color: antiquewhite;
-}
-
-.divImg{
-    height: 30%;
-    text-align: center;
-}
-
-.imgMapa{
-    width: 50%;
-}
-
-.contenido{
-    margin: 1em;
-}
-
 footer{
     width: 100%;
     height: 9vh;
