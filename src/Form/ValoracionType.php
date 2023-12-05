@@ -12,7 +12,6 @@ class ValoracionType extends AbstractType
     {
         $builder
             ->add('puntuacion')
-            ->add('puntuacionMedia')
             ->add('comentario')
         ;
     }

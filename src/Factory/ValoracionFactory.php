@@ -40,8 +40,7 @@ final class ValoracionFactory extends ModelFactory
     {
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
-            'puntuacion' => self::faker()->randomNumber(),
-            'puntuacionMedia' => self::faker()->randomNumber(),
+            'puntuacion' => self::faker()->numberBetween(1, 100),
             'comentario' => self::faker()->text(),
         ];
     }

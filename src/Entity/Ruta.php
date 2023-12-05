@@ -35,9 +35,9 @@ class Ruta
     private $direccion;
 
     /**
-     * @ORM\Column(type="datetime", nullable=true)
+     * @ORM\Column(type="float", nullable=true)
      */
-    private $duracion;
+    private $distancia;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
@@ -60,9 +60,16 @@ class Ruta
      */
     private $valoraciones;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Imagen::class, mappedBy="ruta", cascade={"persist", "remove"}, orphanRemoval=true)
+     */
+    private $imagenes;
+
+
     public function __construct()
     {
         $this->valoraciones = new ArrayCollection();
+        $this->imagenes = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,14 +101,14 @@ class Ruta
         return $this;
     }
 
-    public function getDuracion(): ?\DateTimeInterface
+    public function getDistancia(): ?float
     {
-        return $this->duracion;
+        return $this->distancia;
     }
 
-    public function setDuracion(?\DateTimeInterface $duracion): self
+    public function setDistancia(?float $distancia): self
     {
-        $this->duracion = $duracion;
+        $this->distancia = $distancia;
 
         return $this;
     }
@@ -166,6 +173,36 @@ class Ruta
             // set the owning side to null (unless already changed)
             if ($valoraciones->getRuta() === $this) {
                 $valoraciones->setRuta(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Imagen>
+     */
+    public function getImagenes(): Collection
+    {
+        return $this->imagenes;
+    }
+
+    public function addImagen(Imagen $imagen): self
+    {
+        if (!$this->imagenes->contains($imagen)) {
+            $this->imagenes[] = $imagen;
+            $imagen->setRuta($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImagen(Imagen $imagen): self
+    {
+        if ($this->imagenes->removeElement($imagen)) {
+            // set the owning side to null (unless already changed)
+            if ($imagen->getRuta() === $this) {
+                $imagen->setRuta(null);
             }
         }
 

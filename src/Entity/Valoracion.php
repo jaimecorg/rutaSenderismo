@@ -25,12 +25,6 @@ class Valoracion
     private $puntuacion;
 
     /**
-     * @ORM\Column(type="float", nullable=true)
-     * @Assert\NotBlank()
-     */
-    private $puntuacionMedia;
-
-    /**
      * @ORM\Column(type="text")
      */
     private $comentario;
@@ -58,18 +52,6 @@ class Valoracion
     public function setPuntuacion(int $puntuacion): self
     {
         $this->puntuacion = $puntuacion;
-
-        return $this;
-    }
-
-    public function getPuntuacionMedia(): ?float
-    {
-        return $this->puntuacionMedia;
-    }
-
-    public function setPuntuacionMedia(?float $puntuacionMedia): self
-    {
-        $this->puntuacionMedia = $puntuacionMedia;
 
         return $this;
     }

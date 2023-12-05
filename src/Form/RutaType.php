@@ -13,7 +13,7 @@ class RutaType extends AbstractType
         $builder
             ->add('nombre')
             ->add('direccion')
-            ->add('duracion')
+            ->add('distancia')
             ->add('desnivel')
             ->add('descripcion')
         ;

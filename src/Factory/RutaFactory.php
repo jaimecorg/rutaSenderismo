@@ -42,7 +42,7 @@ final class RutaFactory extends ModelFactory
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'nombre' => self::faker()->word(),
             'direccion' => self::faker()->streetAddress(),
-            'duracion' => self::faker()->dateTime(),
+            'distancia' => self::faker()->randomNumber(),
             'desnivel' => self::faker()->randomNumber(),
             'descripcion' => self::faker()->text(),
         ];

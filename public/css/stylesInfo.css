@@ -1,5 +1,7 @@
+
 article{
-    width: 70%;
+    padding: 0.5em;
+    width: 69%;
     height: 80%;
     position: relative;
     left: 0;
@@ -9,9 +11,10 @@ article{
 }
 
 nav{
+    padding: 0.5em;
     position: relative;
     right: 0;
-    width: 30%;
+    width: 29%;
     height: 80%;
     background-color: aquamarine;
     bottom: 0;
@@ -39,7 +42,6 @@ iframe{
 /* Estilos para la sección de comentarios */
 .comentarios-section {
     width: 90%;
-    max-width: 800px;
     margin: 0 auto;
     padding: 10px;
     border: 1px solid #ccc;

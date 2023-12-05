@@ -5,20 +5,25 @@
         <div class="contenido">
             <p>ARTICLE</p>
 
-            <p>IMAGEN MAPA</p>
-
             <div class="divImg">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3139.6892466773497!2d-3.7866460488276856!3d38.100896501002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6c2633321b1a99%3A0x612788ed24fef1f!2sProl.%20Juan%20Salcedo%20Guill%C3%A9n%2C%2023710%20Bail%C3%A9n%2C%20Ja%C3%A9n!5e0!3m2!1ses!2ses!4v1655806230294!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d784.9437232513633!2d-3.635902294337572!3d38.098903218687546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6e9b313c294117%3A0x76134fbbe1e3384a!2sTienda%20SEUR%20Pickup!5e0!3m2!1ses!2ses!4v1701685640254!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
             <h3>{{ ruta.nombre }}</h3>
 
             <p><strong>Descripción:</strong> {{ ruta.descripcion }}</p>
 
-            <p><strong>Comentarios</strong>Muchos comentarios</p>
-                {% for valoracion in valoraciones %}
+            <p><strong>Comentarios</strong></p>
 
-                    <div class="comentarios-section">
+            <div class="comentarios-section">
+
+                {% set sumaPuntuaciones = 0 %}
+                {% set cantidadValoraciones = 0 %}
+
+                {% for valoracion in valoraciones %}
+                    {% set sumaPuntuaciones = sumaPuntuaciones + valoracion.puntuacion %}
+                    {% set cantidadValoraciones = cantidadValoraciones + 1 %}
+
                         <div class="comentario">
                             <div class="usuario">
                                 <p>{{ valoracion.usuario.nombreUsuario }}</p>
@@ -30,11 +35,8 @@
                                 <p>{{ valoracion.comentario }}</p>
                             </div>
                         </div>
-                    </div>
-
                 {% endfor %}
-
-
+            </div>
         </div>
     </article>
 
@@ -43,24 +45,30 @@
             <p>NAV</p>
 
             <div class="autor">
-                <label for="">Autor:</label>
+                <label>Autor:</label>
                 <span>juanlu99</span>
             </div>
             <p>
-                <label for="">Distancia: </label>
+                <label>Distancia: </label>
                 <span>12.3 km</span>
             </p>
             <p>
-                <label for="">Desnivel: </label>
+                <label>Desnivel: </label>
                 <span>1254 m</span>
             </p>
 
             <p><strong>Desnivel:</strong> {{ ruta.desnivel }}</p>
             <p><strong>Duración:</strong> {{ ruta.duracion ? ruta.duracion | date('d/m/Y') : 'N/A' }}</p>
 
-            <label for="">Dirección: </label>
+            <label>Dirección: </label>
             <p>{{ ruta.direccion }}</p>
+
+            {% if cantidadValoraciones > 0 %}
+                {% set media = sumaPuntuaciones / cantidadValoraciones %}
+                <p>Puntuación media: {{ media }}</p>
+            {% else %}
+                <p>Puntuación media: no hay valoraciones disponibles.</p>
+            {% endif %}
         </div>
     </nav>
-
 {% endblock %}
