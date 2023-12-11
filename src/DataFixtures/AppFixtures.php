@@ -15,16 +15,24 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-
+        UsuarioFactory::createMany(1, function (){
+            return [
+                'administrador' => true
+            ];
+        });
+        UsuarioFactory::createMany(1, function (){
+            return [
+                'moderador' => true
+            ];
+        });
         UsuarioFactory::createMany(15);
-        $usuarios = $manager->getRepository(Usuario::class)->findAll();
 
         ImagenFactory::createMany(15, function (){
             return [
-                'direccion' => 'public/img/carrusel1.jpg'
+                'direccion' => '../img/carrusel3.jpg'
             ];
         });
-        RutaFactory::createMany(15, function () use ($usuarios, $manager) {
+        RutaFactory::createMany(15, function () {
             return [
                 'usuario' => UsuarioFactory::random(),
                 'imagenes' => ImagenFactory::randomRange(3, 5)
