@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Ruta;
 use App\Entity\Valoracion;
 use App\Form\ValoracionType;
 use App\Repository\ValoracionRepository;
@@ -9,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class ValoracionController extends AbstractController
 {
@@ -24,11 +26,30 @@ class ValoracionController extends AbstractController
     }
 
     /**
-     * @Route("/valoracion/nueva", name="valoracion_nueva")
+     * @Route("/valoracion/nueva/{id}", name="valoracion_nueva")
      */
-    public function nuevo(Request $request, ValoracionRepository $valoracionRepository) : Response
+    public function nuevo(Request $request, ValoracionRepository $valoracionRepository, $id, Security $security): Response
     {
         $valoracion = new Valoracion();
+        $valoracion->setFechaCreacion(new \DateTime()); // Establecer la fecha y hora actual
+
+        $user = $security->getUser(); // Obtener el usuario autenticado
+
+        // Establecer el ID del usuario actual en la valoración
+        $valoracion->setUsuario($user);
+
+        // Establecer el ID de la ruta según el parámetro proporcionado en la URL
+        $rutaId = $id;
+        // Obtener la ruta por su ID (puedes usar tu lógica o consulta para obtenerla)
+        $ruta = $this->getDoctrine()->getRepository(Ruta::class)->find($rutaId);
+
+            $valoracion->setRuta($ruta);
+
+
+
+            // Realizar alguna redirección u otra acción después de guardar la valoración
+            // ...
+
 
         return $this->modificar($request, $valoracionRepository, $valoracion);
     }

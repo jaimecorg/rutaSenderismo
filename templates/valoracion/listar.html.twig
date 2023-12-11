@@ -1,11 +1,11 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h3>Listado de rutas </h3>
+    <h3>Listado de valoraciones </h3>
 
-    <p>
+    {#<p>
         <a href="{{ path('valoracion_nueva') }}">Nueva valoración</a>
-    </p>
+    </p>#}
 
     <table id="myTable" class="display" style="width:100%">
         <thead>
@@ -14,7 +14,6 @@
                 <th>Ruta</th>
                 <th>Usuario</th>
                 <th>Puntuación</th>
-                <th>Puntuación media</th>
                 <th>Comentario</th>
                 <th></th>
                 <th></th>
@@ -27,7 +26,6 @@
                 <td>{{ valoracion.ruta.nombre }}</td>
                 <td>{{ valoracion.usuario.correo }}</td>
                 <td>{{ valoracion.puntuacion }}</td>
-                <td>{{ valoracion.puntuacionMedia  }}</td>
                 <td>{{ valoracion.comentario  }}</td>
                 <td><a href="{{ path('valoracion_modificar', {'id': valoracion.id}) }}">Modificar</a></td>
                 <td><a href="{{ path('valoracion_eliminar', {'id': valoracion.id}) }}">Eliminar</a></td>

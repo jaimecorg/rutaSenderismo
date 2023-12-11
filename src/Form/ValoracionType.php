@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Ruta;
 use App\Entity\Valoracion;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,7 +14,7 @@ class ValoracionType extends AbstractType
         $builder
             ->add('puntuacion')
             ->add('comentario')
-        ;
+            ;
     }
     public function configureOptions(OptionsResolver $resolver)
     {

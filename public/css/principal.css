@@ -13,10 +13,13 @@ header{
     width: 90%;
     background-position: center;
     margin-top: 10vh;
+    margin-left: 5%;
 }
 
 .principal_titulos{
     font-style: oblique;
+    margin-top: 1em;
+
 }
 
 .principal_arriba{
@@ -36,6 +39,7 @@ header{
 
     /*font-family: Rockwell;*/
 }
+
 .separador{
     height: 2px;
     width: 100%;
@@ -43,12 +47,14 @@ header{
     margin-top: 0.2em;
     margin-bottom: 0.2em;
 }
+
 .principal_subTitulo{
     font-size: 2em;
     margin-top: 1em;
     margin-bottom:1em ;
     text-align: center;
 }
+
 .carrusel{
     display: flex;
     align-items: center;
@@ -58,6 +64,7 @@ header{
     height: 500px;
     background-color: rgba(217, 194, 88, 0.63);
 }
+
 .carrusel img{
     max-width: 700px;
 }

@@ -3,17 +3,17 @@
 {% block content %}
     <article>
         <div class="contenido">
-            <p>ARTICLE</p>
+            <h3>{{ ruta.nombre }}</h3>
 
             <div class="divImg">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d784.9437232513633!2d-3.635902294337572!3d38.098903218687546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6e9b313c294117%3A0x76134fbbe1e3384a!2sTienda%20SEUR%20Pickup!5e0!3m2!1ses!2ses!4v1701685640254!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
 
-            <h3>{{ ruta.nombre }}</h3>
-
             <p><strong>Descripción:</strong> {{ ruta.descripcion }}</p>
 
             <p><strong>Comentarios</strong></p>
+
+            <a href="{{ path('valoracion_nueva', {'id': ruta.id}) }}">Nuevo comentario</a>
 
             <div class="comentarios-section">
 
@@ -28,47 +28,78 @@
                             <div class="usuario">
                                 <p>{{ valoracion.usuario.nombreUsuario }}</p>
                             </div>
+                            <p>
+                                {{ valoracion.fechaCreacion ? valoracion.fechaCreacion | date('d/m/Y H:i:s') }}
+                            </p>
                             <div class="puntuacion">
-                                <p>{{ valoracion.puntuacion }}</p>
+                                <p>Puntuación: {{ valoracion.puntuacion }}</p>
                             </div>
                             <div class="texto-comentario">
                                 <p>{{ valoracion.comentario }}</p>
                             </div>
+
+                            <a href="{{ path('valoracion_modificar', {'id': valoracion.id}) }}">Editar/Eliminar</a>
+
                         </div>
+
                 {% endfor %}
+
+                <!-- Agregar una sección para la galería de imágenes -->
+                <div class="gallery">
+                    <p>IMÁGENES</p>
+                    <div class="gallery-images">
+                        {% for imagen in imagenes %}
+                            <img src="{{ asset(imagen.direccion) }}" class="thumbnail" onclick="openModal({{ asset(imagen.direccion) }})">
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Ventana modal para mostrar la imagen en grande -->
+                <div id="myModal" class="modal">
+                    <span class="close" onclick="closeModal()">&times;</span>
+                    <img src="" alt="Imagen" class="modal-content" id="modalImg">
+                    <div id="caption"></div>
+                    <a href="{{ path('ruta_info', {'id': ruta.id}) }}" class="back-link">Volver a la página inicial</a>
+                </div>
+
+                <!-- JavaScript para manejar la ventana modal -->
+                <script>
+                    function openModal(imgSrc) {
+                        var modal = document.getElementById("myModal");
+                        var modalImg = document.getElementById("modalImg");
+                        var captionText = document.getElementById("caption");
+                        modal.style.display = "block";
+                        modalImg.src = imgSrc;
+                        captionText.innerHTML = "Descripción de la imagen"; // Puedes añadir una descripción si lo deseas
+                    }
+
+                    function closeModal() {
+                        var modal = document.getElementById("myModal");
+                        modal.style.display = "none";
+                    }
+                </script>
+
             </div>
         </div>
     </article>
 
-    <nav>
+    <nav class="nav-wrapper">
         <div class="contenido">
-            <p>NAV</p>
+            <p class="nav-title">Estadísticas de la ruta</p>
 
-            <div class="autor">
-                <label>Autor:</label>
-                <span>juanlu99</span>
+            <div class="ruta-details">
+                <p><strong>Desnivel:</strong> <span class="ruta-desnivel">{{ ruta.desnivel }}</span></p>
+                <p><strong>Distancia:</strong> <span class="ruta-distancia">{{ ruta.distancia }} metro(s)</span></p>
+                <p><strong>Dirección:</strong> <span class="ruta-direccion">{{ ruta.direccion }}</span></p>
+
+                {% if cantidadValoraciones > 0 %}
+                    {% set media = sumaPuntuaciones / cantidadValoraciones %}
+                    <p><strong>Puntuación media:</strong> <span class="ruta-puntuacion">{{ media }}</span></p>
+                {% else %}
+                    <p><strong>Puntuación media:</strong> <span class="ruta-puntuacion">no hay valoraciones disponibles.</span></p>
+                {% endif %}
             </div>
-            <p>
-                <label>Distancia: </label>
-                <span>12.3 km</span>
-            </p>
-            <p>
-                <label>Desnivel: </label>
-                <span>1254 m</span>
-            </p>
-
-            <p><strong>Desnivel:</strong> {{ ruta.desnivel }}</p>
-            <p><strong>Duración:</strong> {{ ruta.duracion ? ruta.duracion | date('d/m/Y') : 'N/A' }}</p>
-
-            <label>Dirección: </label>
-            <p>{{ ruta.direccion }}</p>
-
-            {% if cantidadValoraciones > 0 %}
-                {% set media = sumaPuntuaciones / cantidadValoraciones %}
-                <p>Puntuación media: {{ media }}</p>
-            {% else %}
-                <p>Puntuación media: no hay valoraciones disponibles.</p>
-            {% endif %}
         </div>
     </nav>
+
 {% endblock %}

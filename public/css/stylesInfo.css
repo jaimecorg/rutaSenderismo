@@ -1,26 +1,32 @@
+body{
+    background-color: #f2f2f2;
 
-article{
-    padding: 0.5em;
-    width: 69%;
-    height: 80%;
-    position: relative;
-    left: 0;
-    bottom: 0;
+}
+article {
+    width: 70%;
     float: left;
-    background-color: antiquewhite;
+    background-color: #f2f2f2;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
-nav{
-    padding: 0.5em;
-    position: relative;
-    right: 0;
-    width: 29%;
-    height: 80%;
-    background-color: aquamarine;
-    bottom: 0;
+nav {
+    width: 30%;
     float: right;
+    box-sizing: border-box;
+    padding: 10px;
 }
 
+@media screen and (max-width: 800px) {
+    article, nav {
+        width: 100%;
+        float: none;
+    }
+}
+
+h3{
+    font-size: 3em;
+}
 .divImg{
     position: relative;
     height: 30%;
@@ -71,3 +77,48 @@ iframe{
     margin-top: 8px;
     color: #666;
 }
+
+/* Estilos con más distancia entre componentes del nav */
+.nav-wrapper {
+    background-color: #f2f2f2;
+    padding: 1em;
+}
+
+.nav-title {
+    font-size: 1.6em;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.ruta-details {
+    border: 1px solid #ccc;
+    padding: 18px;
+    margin-top: 30px;
+}
+
+.ruta-details p {
+    margin: 5px 0;
+}
+
+.ruta-details strong {
+    margin-right: 15px; /* Aumenta el margen a la derecha */
+    font-weight: bold;
+}
+
+.ruta-desnivel {
+    color: #009900;
+}
+
+.ruta-distancia {
+    color: #009900;
+}
+
+.ruta-direccion {
+    color: #009900;
+}
+
+.ruta-puntuacion {
+    color: #009900;
+}
+
+

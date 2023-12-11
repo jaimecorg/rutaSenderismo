@@ -13,9 +13,9 @@
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Dirección</th>
-                <th>Duración</th>
                 <th>Desnivel</th>
                 <th>Descripción</th>
+                <th>Distancia</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -26,9 +26,9 @@
                 <td>{{ ruta.id }}</td>
                 <td>{{ ruta.nombre }}</td>
                 <td>{{ ruta.direccion }}</td>
-                <td>{{ ruta.duracion ? ruta.duracion | date('d/m/Y') }}</td>
                 <td>{{ ruta.desnivel  }}</td>
                 <td>{{ ruta.descripcion  }}</td>
+                <td>{{ ruta.distancia  }}</td>
 
                 <td><a href="{{ path('ruta_modificar', {'id': ruta.id}) }}">Modificar</a></td>
                 <td><a href="{{ path('ruta_eliminar', {'id': ruta.id}) }}">Eliminar</a></td>

@@ -106,10 +106,12 @@ class RutaController extends AbstractController
 
         // Obtener las valoraciones de la ruta
         $valoraciones = $ruta->getValoraciones();
+        $imagenes = $ruta->getImagenes();
 
         return $this->render('ruta/listadoInfo.html.twig', [
             'ruta' => $ruta,
             'valoraciones' => $valoraciones,
+            'imagenes' => $imagenes,
         ]);
     }
 }

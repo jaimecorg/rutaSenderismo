@@ -39,6 +39,13 @@ class Valoracion
      */
     private $usuario;
 
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $fechaCreacion;
+
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -91,4 +98,17 @@ class Valoracion
 
         return $this;
     }
+
+    public function getFechaCreacion(): ?\DateTimeInterface
+    {
+        return $this->fechaCreacion;
+    }
+
+    public function setFechaCreacion(?\DateTimeInterface $fechaCreacion): self
+    {
+        $this->fechaCreacion = $fechaCreacion;
+
+        return $this;
+    }
+
 }
