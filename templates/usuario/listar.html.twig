@@ -32,14 +32,14 @@
                     <td>{{ usuario.clave  }}</td>
                     <td>
                         <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <button class="dropbtn">
                                 Rutas
                             </button>
-                            <ul class="dropdown-menu">
+                            <div class="dropdown-content">
                                 {% for ruta in usuario.rutas %}
-                                    <li><a class="dropdown-item" href="{{ path('ruta_modificar', {'id': ruta.id}) }}">{{ ruta.nombre }}</a></li>
+                                    <a class="dropdown-item" href="{{ path('ruta_modificar', {'id': ruta.id}) }}">{{ ruta.nombre }}</a>
                                 {% endfor %}
-                            </ul>
+                            </div>
                         </div>
                     </td>
                     <td>{{ usuario.permisos  }}</td>

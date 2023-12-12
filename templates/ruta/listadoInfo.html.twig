@@ -11,7 +11,7 @@
 
             <p><strong>Descripción:</strong> {{ ruta.descripcion }}</p>
 
-            <p><strong>Comentarios</strong></p>
+            <p><strong>Comentarios </strong><span class="icon-bubbles4"></span></p>
 
             <a href="{{ path('valoracion_nueva', {'id': ruta.id}) }}">Nuevo comentario</a>
 
@@ -66,7 +66,7 @@
 
                 {% if cantidadValoraciones > 0 %}
                     {% set media = sumaPuntuaciones / cantidadValoraciones %}
-                    <p><strong>Puntuación media:</strong> <span class="ruta-puntuacion">{{ media }}</span></p>
+                    <p><strong>Puntuación media:</strong> <span class="ruta-puntuacion">{{ media }}</span><span class="icon-star-empty"></span></p>
                 {% else %}
                     <p><strong>Puntuación media:</strong> <span class="ruta-puntuacion">no hay valoraciones disponibles.</span></p>
                 {% endif %}

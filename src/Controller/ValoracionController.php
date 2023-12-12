@@ -43,13 +43,7 @@ class ValoracionController extends AbstractController
         // Obtener la ruta por su ID (puedes usar tu lógica o consulta para obtenerla)
         $ruta = $this->getDoctrine()->getRepository(Ruta::class)->find($rutaId);
 
-            $valoracion->setRuta($ruta);
-
-
-
-            // Realizar alguna redirección u otra acción después de guardar la valoración
-            // ...
-
+        $valoracion->setRuta($ruta);
 
         return $this->modificar($request, $valoracionRepository, $valoracion);
     }
@@ -68,7 +62,7 @@ class ValoracionController extends AbstractController
             try {
                 $valoracionRepository->add($valoracion);
                 $this->addFlash('success', 'Cambios guardados con éxito');
-                return $this->redirectToRoute('valoracion_listar');
+                return $this->redirectToRoute('ruta_listar_detalle');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'Error al guardar los cambios');
             }
@@ -91,7 +85,7 @@ class ValoracionController extends AbstractController
             try {
                 $valoracionRepository->remove($valoracion);
                 $this->addFlash('success', 'Valoración eliminada con éxito');
-                return $this->redirectToRoute('valoracion_listar');
+                return $this->redirectToRoute('ruta_listar_detalle');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'Error al eliminar la valoración');
             }

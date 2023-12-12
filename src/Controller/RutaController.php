@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Security;
 
 class RutaController extends AbstractController
 {
@@ -27,9 +28,17 @@ class RutaController extends AbstractController
     /**
      * @Route("/ruta/nueva", name="ruta_nueva")
      */
-    public function nuevo(Request $request, RutaRepository $rutaRepository) : Response
+    public function nuevo(Request $request, RutaRepository $rutaRepository, Security $security): Response
     {
         $ruta = new Ruta();
+
+        // Obtener el usuario autenticado
+        $usuario = $security->getUser();
+
+        // Asignar el usuario a la nueva ruta
+        if ($usuario !== null) {
+            $ruta->setUsuario($usuario);
+        }
 
         return $this->modificar($request, $rutaRepository, $ruta);
     }
