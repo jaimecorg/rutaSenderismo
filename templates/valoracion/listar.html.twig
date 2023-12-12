@@ -1,14 +1,15 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h3>Listado de valoraciones </h3>
+    <div style="padding: 1em;">
+        <h3>Listado de valoraciones</h3>
 
-    {#<p>
-        <a href="{{ path('valoracion_nueva') }}">Nueva valoración</a>
-    </p>#}
+        {#<p>
+            <a href="{{ path('valoracion_nueva') }}">Nueva valoración</a>
+        </p>#}
 
-    <table id="myTable" class="display" style="width:100%">
-        <thead>
+        <table id="myTable" class="display" style="width:100%">
+            <thead>
             <tr>
                 <th>ID</th>
                 <th>Ruta</th>
@@ -18,23 +19,24 @@
                 <th></th>
                 <th></th>
             </tr>
-        </thead>
-        <tbody>
-        {% for valoracion in valoraciones %}
-            <tr>
-                <td>{{ valoracion.id }}</td>
-                <td>{{ valoracion.ruta.nombre }}</td>
-                <td>{{ valoracion.usuario.correo }}</td>
-                <td>{{ valoracion.puntuacion }}</td>
-                <td>{{ valoracion.comentario  }}</td>
-                <td><a href="{{ path('valoracion_modificar', {'id': valoracion.id}) }}">Modificar</a></td>
-                <td><a href="{{ path('valoracion_eliminar', {'id': valoracion.id}) }}">Eliminar</a></td>
-            </tr>
-        {% else %}
-            <tr>
-                <th colspan="5">No hay valoraciones</th>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+            {% for valoracion in valoraciones %}
+                <tr>
+                    <td>{{ valoracion.id }}</td>
+                    <td>{{ valoracion.ruta.nombre }}</td>
+                    <td>{{ valoracion.usuario.correo }}</td>
+                    <td>{{ valoracion.puntuacion }}</td>
+                    <td>{{ valoracion.comentario  }}</td>
+                    <td><a href="{{ path('valoracion_modificar', {'id': valoracion.id}) }}">Modificar</a></td>
+                    <td><a href="{{ path('valoracion_eliminar', {'id': valoracion.id}) }}">Eliminar</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <th colspan="5">No hay valoraciones</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

@@ -49,7 +49,7 @@ class Usuario implements UserInterface
     private $rutas;
 
     /**
-     * @ORM\OneToMany(targetEntity=Valoracion::class, mappedBy="usuario")
+     * @ORM\OneToMany(targetEntity=Valoracion::class, mappedBy="usuario", cascade={"remove"})
      */
     private $valoraciones;
 

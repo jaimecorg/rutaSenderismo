@@ -1,30 +1,32 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h3>Rutas detalle </h3>
+    <div style="padding: 1em;">
+        <h3>Rutas detalle </h3>
 
-    <p>
-        <a href="{{ path('ruta_nueva') }}">Nueva ruta</a>
-    </p>
+        <p>
+            <a href="{{ path('ruta_nueva') }}">Nueva ruta</a>
+        </p>
 
-    <div class="ruta-cards">
-        {% for ruta in rutas %}
-            <div class="ruta-card">
-                <div class="ruta-card-header">
-                    <h4>{{ ruta.nombre }}</h4>
-                    <p>{{ ruta.direccion }}</p>
+        <div class="ruta-cards">
+            {% for ruta in rutas %}
+                <div class="ruta-card">
+                    <div class="ruta-card-header">
+                        <h4>{{ ruta.nombre }}</h4>
+                        <p>{{ ruta.direccion }}</p>
+                    </div>
+                    <div class="ruta-card-details">
+                        <p><strong>Desnivel:</strong> {{ ruta.desnivel }}</p>
+                        <p><strong>Distancia:</strong> {{ ruta.distancia }}</p>
+                        <p><strong>Descripción:</strong> {{ ruta.descripcion }}</p>
+                    </div>
+                    <div class="ruta-card-actions">
+                        <a href="{{ path('ruta_info', {'id': ruta.id}) }}">Ver</a>
+                    </div>
                 </div>
-                <div class="ruta-card-details">
-                    <p><strong>Desnivel:</strong> {{ ruta.desnivel }}</p>
-                    <p><strong>Distancia:</strong> {{ ruta.distancia }}</p>
-                    <p><strong>Descripción:</strong> {{ ruta.descripcion }}</p>
-                </div>
-                <div class="ruta-card-actions">
-                    <a href="{{ path('ruta_info', {'id': ruta.id}) }}">Ver</a>
-                </div>
-            </div>
-        {% else %}
-            <p>No hay rutas</p>
-        {% endfor %}
+            {% else %}
+                <p>No hay rutas</p>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

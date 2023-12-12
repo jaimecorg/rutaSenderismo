@@ -1,14 +1,15 @@
 {% extends 'layout.html.twig' %}
 
 {% block content %}
-    <h3>Listado de rutas </h3>
+    <div style="padding: 1em;">
+        <h3>Listado de rutas </h3>
 
-    <p>
-        <a href="{{ path('ruta_nueva') }}">Nueva ruta</a>
-    </p>
+        <p>
+            <a href="{{ path('ruta_nueva') }}">Nueva ruta</a>
+        </p>
 
-    <table id="myTable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
-        <thead>
+        <table id="myTable" class="uk-table uk-table-hover uk-table-striped" style="width:100%">
+            <thead>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
@@ -19,25 +20,26 @@
                 <th></th>
                 <th></th>
             </tr>
-        </thead>
-        <tbody>
-        {% for ruta in rutas %}
-            <tr>
-                <td>{{ ruta.id }}</td>
-                <td>{{ ruta.nombre }}</td>
-                <td>{{ ruta.direccion }}</td>
-                <td>{{ ruta.desnivel  }}</td>
-                <td>{{ ruta.descripcion  }}</td>
-                <td>{{ ruta.distancia  }}</td>
+            </thead>
+            <tbody>
+            {% for ruta in rutas %}
+                <tr>
+                    <td>{{ ruta.id }}</td>
+                    <td>{{ ruta.nombre }}</td>
+                    <td>{{ ruta.direccion }}</td>
+                    <td>{{ ruta.desnivel  }}</td>
+                    <td>{{ ruta.descripcion  }}</td>
+                    <td>{{ ruta.distancia  }}</td>
 
-                <td><a href="{{ path('ruta_modificar', {'id': ruta.id}) }}">Modificar</a></td>
-                <td><a href="{{ path('ruta_eliminar', {'id': ruta.id}) }}">Eliminar</a></td>
-            </tr>
-        {% else %}
-            <tr>
-                <th colspan="5">No hay rutas</th>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                    <td><a href="{{ path('ruta_modificar', {'id': ruta.id}) }}">Modificar</a></td>
+                    <td><a href="{{ path('ruta_eliminar', {'id': ruta.id}) }}">Eliminar</a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <th colspan="5">No hay rutas</th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

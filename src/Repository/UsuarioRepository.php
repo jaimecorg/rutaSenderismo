@@ -39,12 +39,9 @@ class UsuarioRepository extends ServiceEntityRepository
      * @throws ORMException
      * @throws OptimisticLockException
      */
-    public function remove(Usuario $entity, bool $flush = true): void
+    public function remove(Usuario $usuario) : void
     {
-        $this->_em->remove($entity);
-        if ($flush) {
-            $this->_em->flush();
-        }
+        $this->getEntityManager()->remove($usuario);
     }
     public function findAllOrdenados()
     {

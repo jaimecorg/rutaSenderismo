@@ -10,9 +10,23 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 15px;
-    width: calc(30% - 10px); /* Para mostrar 3 tarjetas por fila, ajusta el ancho según tus necesidades */
+    width: calc(31% - 25px); /* Para mostrar 3 tarjetas por fila, ajusta el ancho según tus necesidades */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
+}
+
+/* Media query para mostrar 2 tarjetas por fila en pantallas más pequeñas */
+@media screen and (max-width: 768px) {
+    .ruta-card {
+        width: calc(50% - 20px); /* Para mostrar 2 tarjetas por fila */
+    }
+}
+
+/* Media query para mostrar 1 tarjeta por fila en pantallas aún más pequeñas */
+@media screen and (max-width: 480px) {
+    .ruta-card {
+        width: calc(100% - 15px); /* Para mostrar 1 tarjeta por fila */
+    }
 }
 
 .ruta-card:hover {

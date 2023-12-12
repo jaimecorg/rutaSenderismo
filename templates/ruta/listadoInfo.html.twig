@@ -41,44 +41,16 @@
                             <a href="{{ path('valoracion_modificar', {'id': valoracion.id}) }}">Editar/Eliminar</a>
 
                         </div>
-
                 {% endfor %}
 
-                <!-- Agregar una sección para la galería de imágenes -->
                 <div class="gallery">
                     <p>IMÁGENES</p>
                     <div class="gallery-images">
                         {% for imagen in imagenes %}
-                            <img src="{{ asset(imagen.direccion) }}" class="thumbnail" onclick="openModal({{ asset(imagen.direccion) }})">
+                            <img src="{{ asset(imagen.direccion) }}" class="thumbnail" alt="">
                         {% endfor %}
                     </div>
                 </div>
-
-                <!-- Ventana modal para mostrar la imagen en grande -->
-                <div id="myModal" class="modal">
-                    <span class="close" onclick="closeModal()">&times;</span>
-                    <img src="" alt="Imagen" class="modal-content" id="modalImg">
-                    <div id="caption"></div>
-                    <a href="{{ path('ruta_info', {'id': ruta.id}) }}" class="back-link">Volver a la página inicial</a>
-                </div>
-
-                <!-- JavaScript para manejar la ventana modal -->
-                <script>
-                    function openModal(imgSrc) {
-                        var modal = document.getElementById("myModal");
-                        var modalImg = document.getElementById("modalImg");
-                        var captionText = document.getElementById("caption");
-                        modal.style.display = "block";
-                        modalImg.src = imgSrc;
-                        captionText.innerHTML = "Descripción de la imagen"; // Puedes añadir una descripción si lo deseas
-                    }
-
-                    function closeModal() {
-                        var modal = document.getElementById("myModal");
-                        modal.style.display = "none";
-                    }
-                </script>
-
             </div>
         </div>
     </article>
