@@ -27,9 +27,10 @@ class RutaController extends AbstractController
 
     /**
      * @Route("/ruta/nueva", name="ruta_nueva")
-     */
+    */
     public function nuevo(Request $request, RutaRepository $rutaRepository, Security $security): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_MODERADOR');
         $ruta = new Ruta();
 
         // Obtener el usuario autenticado
@@ -48,7 +49,7 @@ class RutaController extends AbstractController
      */
     public function modificar(Request $request, RutaRepository $rutaRepository, Ruta $ruta) : Response
     {
-        //$this->denyAccessUnlessGranted('ROLE_MODERADOR');
+        $this->denyAccessUnlessGranted('ROLE_MODERADOR');
 
         $form = $this->createForm(RutaType::class, $ruta);
         $form->handleRequest($request);
@@ -74,7 +75,7 @@ class RutaController extends AbstractController
      */
     public function eliminar(Request $request, RutaRepository $rutaRepository, Ruta $ruta) : Response
     {
-//        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $this->denyAccessUnlessGranted('ROLE_MODERADOR');
 
         if ($request->getMethod() === 'POST' && $request->get('confirmar') === 'ok') {
             try {

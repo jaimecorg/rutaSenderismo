@@ -19,7 +19,10 @@ class ValoracionController extends AbstractController
      */
     public function listar(ValoracionRepository $valoracionRepository) : Response
     {
+        $this->denyAccessUnlessGranted('ROLE_MODERADOR');
+
         $valoraciones = $valoracionRepository->findAllOrdenadas();
+
         return $this->render('valoracion/listar.html.twig', [
             'valoraciones' => $valoraciones
         ]);
@@ -30,6 +33,8 @@ class ValoracionController extends AbstractController
      */
     public function nuevo(Request $request, ValoracionRepository $valoracionRepository, $id, Security $security): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USUARIO');
+
         $valoracion = new Valoracion();
         $valoracion->setFechaCreacion(new \DateTime()); // Establecer la fecha y hora actual
 
@@ -53,7 +58,7 @@ class ValoracionController extends AbstractController
      */
     public function modificar(Request $request, ValoracionRepository $valoracionRepository, Valoracion $valoracion) : Response
     {
-        //$this->denyAccessUnlessGranted('ROLE_MODERADOR');
+        $this->denyAccessUnlessGranted('ROLE_MODERADOR');
 
         $form = $this->createForm(ValoracionType::class, $valoracion);
         $form->handleRequest($request);
@@ -79,7 +84,7 @@ class ValoracionController extends AbstractController
      */
     public function eliminar(Request $request, ValoracionRepository $valoracionRepository, Valoracion $valoracion) : Response
     {
-//        $this->denyAccessUnlessGranted('ROLE_ADMIN');
+        $this->denyAccessUnlessGranted('ROLE_MODERADOR');
 
         if ($request->getMethod() === 'POST' && $request->get('confirmar') === 'ok') {
             try {

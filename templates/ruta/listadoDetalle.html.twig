@@ -4,9 +4,12 @@
     <div style="padding: 1em;">
         <h3>Rutas detalle </h3>
 
-        <p>
-            <a href="{{ path('ruta_nueva') }}">Nueva ruta</a>
-        </p>
+        {% if is_granted('ROLE_MODERADOR') == true %}
+            <p>
+                <a href="{{ path('ruta_nueva') }}">Nueva ruta</a>
+            </p>
+        {% endif %}
+
 
         <div class="ruta-cards">
             {% for ruta in rutas %}

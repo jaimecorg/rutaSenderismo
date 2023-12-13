@@ -21,6 +21,11 @@
                     <button class="btn btn-primary btn-block" type="submit">Acceder</button>
                 </div>
             </form>
+
+            {% if is_granted('ROLE_USUARIO') == false %}
+                <a href="{{ path('usuario_nuevo') }}">Registrarse</a>
+            {% endif %}
+
         </div>
     {% endblock %}
     </div>

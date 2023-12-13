@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Usuario;
 use App\Form\UsuarioType;
 use App\Repository\UsuarioRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,6 +15,7 @@ class UsuarioController extends AbstractController
 {
     /**
      * @Route("/usuario", name="usuario_listar")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function listar(UsuarioRepository $usuarioRepository) : Response
     {
@@ -25,6 +27,7 @@ class UsuarioController extends AbstractController
 
     /**
      * @Route("/usuario/nuevo", name="usuario_nuevo")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function nuevo(Request $request, UsuarioRepository $usuarioRepository) : Response
     {
@@ -35,6 +38,7 @@ class UsuarioController extends AbstractController
 
     /**
      * @Route("/usuario/{id}", name="usuario_modificar")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function modificar(Request $request, UsuarioRepository $usuarioRepository, Usuario $usuario) : Response
     {
@@ -61,6 +65,7 @@ class UsuarioController extends AbstractController
 
     /**
      * @Route("/usuario/eliminar/{id}", name="usuario_eliminar")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function eliminar(Request $request, UsuarioRepository $usuarioRepository, Usuario $usuario) : Response
     {

@@ -13,7 +13,9 @@
 
             <p><strong>Comentarios </strong><span class="icon-bubbles4"></span></p>
 
-            <a href="{{ path('valoracion_nueva', {'id': ruta.id}) }}">Nuevo comentario</a>
+            {% if is_granted('ROLE_USUARIO') == true %}
+                <a href="{{ path('valoracion_nueva', {'id': ruta.id}) }}">Nuevo comentario</a>
+            {% endif %}
 
             <div class="comentarios-section">
 
@@ -38,7 +40,9 @@
                                 <p>{{ valoracion.comentario }}</p>
                             </div>
 
-                            <a href="{{ path('valoracion_modificar', {'id': valoracion.id}) }}">Editar/Eliminar</a>
+                            {% if is_granted('ROLE_MODERADOR') == true %}
+                                <a href="{{ path('valoracion_modificar', {'id': valoracion.id}) }}">Editar/Eliminar</a>
+                            {% endif %}
 
                         </div>
                 {% endfor %}

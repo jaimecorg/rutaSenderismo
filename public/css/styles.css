@@ -20,13 +20,13 @@ header button{
     font-size: 1.5em;
     color: #4CAF50;
 }
+
 .main-header{
     height: 8vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 
 .main-nav{
     position: fixed;
