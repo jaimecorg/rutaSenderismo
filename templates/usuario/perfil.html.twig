@@ -23,7 +23,7 @@
 
     <hr>
 
-    <h3>Rutas del usuario</h3>
+    <h3>Rutas</h3>
 
     {% if rutasUsuario is empty %}
         <p>No se han encontrado rutas para este usuario.</p>
@@ -33,8 +33,23 @@
                 <span>{{ ruta.nombre }}</span>
                 <<a href="{{ path('ruta_eliminar', {'id': ruta.id}) }}">Eliminar</a>
             </p>
+        {% endfor %}
+    {% endif %}
 
+    <hr>
 
+    <h3>Valoraciones</h3>
+
+    {% if rutasUsuario is empty %}
+        <p>No se han encontrado valoraciones para este usuario.</p>
+    {% else %}
+        {% for valoracion in valoracionesUsuario %}
+            <p>
+                <p>Nombre de la ruta: {{ valoracion.ruta.nombre }}</p>
+                <p>Puntuación: {{ valoracion.puntuacion }}</p>
+                <p>Comentario: {{ valoracion.comentario }}</p>
+                <<a href="{{ path('valoracion_eliminar', {'id': valoracion.id}) }}">Eliminar</a>
+            </p>
         {% endfor %}
     {% endif %}
 

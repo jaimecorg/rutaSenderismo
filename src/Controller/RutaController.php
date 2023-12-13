@@ -79,7 +79,7 @@ class RutaController extends AbstractController
             try {
                 $rutaRepository->remove($ruta);
                 $this->addFlash('success', 'Ruta eliminada con éxito');
-                return $this->redirectToRoute('ruta_listar');
+                return $this->redirectToRoute('ruta_listar_detalle');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'Error al eliminar la ruta');
             }

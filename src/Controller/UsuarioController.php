@@ -111,6 +111,7 @@ class UsuarioController extends AbstractController
 
         // Obtener todas las rutas del usuario
         $rutasUsuario = $usuario->getRutas();
+        $valoracionesUsuario = $usuario->getValoraciones();
 
         if ($form->isSubmitted() && $form->isValid()) {
             try {
@@ -125,7 +126,8 @@ class UsuarioController extends AbstractController
         return $this->render('usuario/perfil.html.twig', [
             'usuario' => $usuario,
             'form' => $form->createView(),
-            'rutasUsuario' => $rutasUsuario
+            'rutasUsuario' => $rutasUsuario,
+            'valoracionesUsuario' => $valoracionesUsuario
         ]);
     }
 

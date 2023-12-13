@@ -90,7 +90,7 @@ class ValoracionController extends AbstractController
             try {
                 $valoracionRepository->remove($valoracion);
                 $this->addFlash('success', 'Valoración eliminada con éxito');
-                return $this->redirectToRoute('ruta_listar_detalle');
+                return $this->redirectToRoute('principal');
             } catch (\Exception $e) {
                 $this->addFlash('error', 'Error al eliminar la valoración');
             }
