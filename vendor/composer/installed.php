@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => 'f8ae57b202ae78a4a919540544a3a07126c70548',
+        'reference' => 'a2b307741bbfab7475e484ddf994c16cb6b172d9',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => 'f8ae57b202ae78a4a919540544a3a07126c70548',
+            'reference' => 'a2b307741bbfab7475e484ddf994c16cb6b172d9',
             'dev_requirement' => false,
         ),
         'composer/package-versions-deprecated' => array(
@@ -447,6 +447,15 @@
             'provided' => array(
                 0 => '1.1',
             ),
+        ),
+        'symfony/expression-language' => array(
+            'pretty_version' => 'v4.4.47',
+            'version' => '4.4.47.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/expression-language',
+            'aliases' => array(),
+            'reference' => 'e4964c7636e19f6008660f450c09121c80c2a7b9',
+            'dev_requirement' => false,
         ),
         'symfony/filesystem' => array(
             'pretty_version' => 'v4.4.42',

@@ -30,7 +30,7 @@ class Usuario implements UserInterface
     private $correo;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank()
      * @Assert\Length(max=255)
      */
@@ -55,7 +55,6 @@ class Usuario implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank()
      * @Assert\Length(max=255)
      */
     private $permisos;

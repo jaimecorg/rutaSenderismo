@@ -22,9 +22,7 @@
                 </div>
             </form>
 
-            {% if is_granted('ROLE_USUARIO') == false %}
-                <a href="{{ path('usuario_nuevo') }}">Registrarse</a>
-            {% endif %}
+            <a href="{{ path('usuario_crear_perfil') }}">Registrarse</a>
 
         </div>
     {% endblock %}

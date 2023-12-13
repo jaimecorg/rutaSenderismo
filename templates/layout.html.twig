@@ -21,9 +21,12 @@
                     <a class="link-item icon-enter" aria-current="page" href="{{ path('entrar') }}">Login</a>
                 {% endif %}
                 {% if is_granted('ROLE_USUARIO') %}
-                    <a class="link-item icon-user-tie" aria-current="page" href="{{ path('salir') }}">Perfil</a>
+                    {# Obtener el ID del usuario autenticado #}
+                    {% set userId = app.user.id %}
+                    <a class="link-item icon-user-tie" aria-current="page" href="{{ path('usuario_modificar_perfil', {'id': userId}) }}">Perfil</a>
                     <a class="link-item icon-exit" aria-current="page" href="{{ path('salir') }}">Logout</a>
                 {% endif %}
+
             </div>
         </nav>
 

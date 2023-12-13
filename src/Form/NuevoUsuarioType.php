@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class UsuarioType extends AbstractType
+class NuevoUsuarioType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -16,14 +16,18 @@ class UsuarioType extends AbstractType
             ->add('nombreUsuario')
             ->add('correo')
             ->add('clave')
-            ->add('permisos')->add('permisos')
+            ->add('permisos', null, [
+                'disabled' => true, // Hace que el campo sea no editable
+            ])
             ->add('moderador', CheckboxType::class, [
                 'label' => 'Moderador',
-                'required' => false, // No es un campo obligatorio
+                'required' => false,
+                'disabled' => true, // No se puede modificar
             ])
             ->add('administrador', CheckboxType::class, [
                 'label' => 'Administrador',
-                'required' => false, // No es un campo obligatorio
+                'required' => false,
+                'disabled' => true, // No se puede modificar
             ]);
     }
     public function configureOptions(OptionsResolver $resolver)

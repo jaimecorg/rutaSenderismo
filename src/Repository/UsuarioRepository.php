@@ -50,6 +50,11 @@ class UsuarioRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function encontrarPorId($idUsuario): ?Usuario
+    {
+        return $this->findOneBy(['id' => $idUsuario]);
+    }
     // /**
     //  * @return Usuario[] Returns an array of Usuario objects
     //  */

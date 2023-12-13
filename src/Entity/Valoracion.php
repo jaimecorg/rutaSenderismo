@@ -21,6 +21,11 @@ class Valoracion
     /**
      * @ORM\Column(type="integer")
      * @Assert\NotBlank()
+     * @Assert\Range(
+     * min=0,
+     * max=100,
+     * notInRangeMessage="La puntuación debe estar entre {{ min }} y {{ max }}."
+     * )
      */
     private $puntuacion;
 

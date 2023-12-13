@@ -75,8 +75,6 @@ class RutaController extends AbstractController
      */
     public function eliminar(Request $request, RutaRepository $rutaRepository, Ruta $ruta) : Response
     {
-        $this->denyAccessUnlessGranted('ROLE_MODERADOR');
-
         if ($request->getMethod() === 'POST' && $request->get('confirmar') === 'ok') {
             try {
                 $rutaRepository->remove($ruta);
