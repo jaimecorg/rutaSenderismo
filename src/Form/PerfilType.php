@@ -16,7 +16,9 @@ class PerfilType extends AbstractType
             ->add('nombreUsuario')
             ->add('correo')
             ->add('clave')
-            ->add('permisos')->add('permisos') // Este campo no está claro si se refiere a 'moderador' y 'administrador'
+            ->add('permisos', null, [
+                'disabled' => true, // Hace que el campo sea no editable
+            ])
             ;
     }
     public function configureOptions(OptionsResolver $resolver)
