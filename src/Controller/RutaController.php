@@ -30,7 +30,7 @@ class RutaController extends AbstractController
     */
     public function nuevo(Request $request, RutaRepository $rutaRepository, Security $security): Response
     {
-        $this->denyAccessUnlessGranted('ROLE_MODERADOR');
+        $this->denyAccessUnlessGranted('ROLE_USUARIO');
         $ruta = new Ruta();
 
         // Obtener el usuario autenticado

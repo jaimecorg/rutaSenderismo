@@ -4,7 +4,7 @@
     <div style="padding: 1em;">
         <h3>Rutas detalle </h3>
 
-        {% if is_granted('ROLE_MODERADOR') == true %}
+        {% if is_granted('ROLE_USUARIO') == true %}
             <p>
                 <a href="{{ path('ruta_nueva') }}">Nueva ruta</a>
             </p>
